@@ -15,14 +15,14 @@ class Login extends React.Component {
 function Login(){
     const [isLogged, setIsLogged] = useState(false);
     const [formData, setFormData] = useState({
-        user: "",
+        email: "",
         password: "",
     });
   
 
     const handleSubmit =(e) => {
         e.preventDefault();
-        const res = AuthService.login(formData.user, formData.password)
+        const res = AuthService.login(formData.email, formData.password)
         if (res) {
             setIsLogged(true);
         } else {
@@ -37,8 +37,8 @@ function Login(){
         // })
     }
 
-   const handleChange =(e) =>{
-        setFormData({...formData, [formData.name]: formData.value });
+    const handleChange = (e)=>{
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
       /*   const { isLogged } = this.state; */
         return (
@@ -51,7 +51,7 @@ function Login(){
                     <div className="form-group">
                         <label>Correo Electronico
                             <input
-                                name='user' value={formData.user} onChange={handleChange} required type="text" className="form-control" placeholder="Enter your User">
+                                name='email' value={formData.email} onChange={handleChange} required type="text" className="form-control" placeholder="Enter your Email">
                             </input>
                         </label>
                         <br></br><br></br>

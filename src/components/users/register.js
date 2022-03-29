@@ -14,6 +14,7 @@ function Register(){
     const [ passwordMatch, setPasswordMathch] =useState (false);
     const [formData, setFormData] = useState({
         nameUser: "",
+        subname:"",
         password: "",
         confPassword: "",
         email: ""
@@ -27,7 +28,7 @@ function Register(){
             )
             
         AuthService.register(
-            formData.name,formData.email,formData.password)
+            formData.name,formData.subname,formData.email,formData.password)
             .then((res)=>{
                 if(res){
                     setSubmitDone(true);
@@ -50,6 +51,10 @@ function Register(){
                         <label className="row m-2">
                             <p className="col-6">Nombre:</p>
                             <input className="col-6" name="name" type='text' required value={formData.name} onChange={handleChange} />
+                        </label>
+                        <label className="row m-2">
+                            <p className="col-6">apellido:</p>
+                            <input className="col-6" name="subname" type='text' required value={formData.subname} onChange={handleChange} />
                         </label>
                         <label className="row m-2">
                             <p className="col-6">email:</p>

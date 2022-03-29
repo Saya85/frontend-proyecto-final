@@ -2,7 +2,7 @@ import axios from "axios";
 
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:2030/users/';
+const API_URL = 'http://localhost:3000/user/';
 
 class AuthService {
    getCurrentUser() {
@@ -28,15 +28,20 @@ class AuthService {
     logout() {
       try {
         return axios.get(API_URL+'logout', { headers: authHeader() })
-          .then(() => {return true}).catch(() => {return false});
+          .then(() => {
+            return true
+          }).catch(() => {
+            return false
+          });
       } catch (error) {
       }
     }
   
-    register(name, email, password) {
+    register(name,subname, email, password) {
       try {
         return axios.post(API_URL + "register", {
-          "name": name,   
+          "name": name,
+          "subname": subname,   
           "email": email,
           "password": password
         }).then(() => {
