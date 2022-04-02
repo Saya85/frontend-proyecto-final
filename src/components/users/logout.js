@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { Navigate } from "react-router-dom";
 import AuthService from '../../services/auth'
 
 const Logout = () => {
@@ -8,7 +9,7 @@ const Logout = () => {
             .then(res => console.log('Logout completado'))
     })
 
-    return <h2>logout</h2>
+    return <Navigate to='/'/>
 }
 
 export default Logout

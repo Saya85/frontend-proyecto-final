@@ -27,7 +27,7 @@ class AuthService {
   }     
     logout() {
       try {
-        return axios.get(API_URL+'logout', { headers: authHeader() })
+        return axios.delete(API_URL+'logout', { headers: authHeader() })
           .then(() => {
             return true
           }).catch(() => {

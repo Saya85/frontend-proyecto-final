@@ -8,7 +8,7 @@ import Home from './components/home';
 import Login from './components/users/login';
 //import LoginAdmin from './components/admin/login-admin';
 import Logout from './components/users/logout';
-//import Movies from './components/movies/movies';
+import Capitulo from './components/pages/capitulo';
 import Register from './components/users/register';
 //import RegisterAdmin from './components/admin/register-admin';
 //import Alquileres from './components/alquiler/alquileres';
@@ -26,6 +26,7 @@ function App() {
            <Route path='/login' element={<Login />} /> 
            <Route path='/logout' element={<Logout />} /> 
            <Route path='/register' element={<Register />} /> 
+           <Route path='/capitulo/:id' element={<Capitulo/>}/>
            {/* <Route path='/movies' element={<Movies/>}/>
            <Route path='/alquiler/:id' element={<Alquiler/>}/>
            <Route path='/alquileres' element={<Alquileres/>}/> */}
