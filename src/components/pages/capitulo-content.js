@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 
-import { Link,  } from "react-router-dom";
+import { Link, useParams  } from "react-router-dom";
 import ComentarioServices from "../../services/comentario";
 
 /* class AlquilerContent extends React.Component{
@@ -12,29 +12,15 @@ import ComentarioServices from "../../services/comentario";
     }
  */
 function CapituloContent(){
-    const [items, setItems] = useState([]);
+    const { id } = useParams();
+    const [items, setItems] = useState( ()=>{
+        console.log(id);
+      ComentarioServices.comentarioCapitulo(id)
+    .then(res => res.data)
+    .catch(err => console.log(err))
+    });
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
-
-    useEffect(() => {
-        try {
-            const {id} = this.props;
-            console.log(id);
-            ComentarioServices.comentarioCapitulo(id).then(response => {
-                if (response === false) {
-                    alert('No se puede mostrar los comentarios');
-                } else {
-                    console.log(response);
-                    setItems(response);
-                    setIsLoaded(true)
-                }
-            }).catch(error => {
-                setIsLoaded(false);
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }, []);
 
     return (
         <div>
