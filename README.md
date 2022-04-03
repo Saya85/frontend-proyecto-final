@@ -9,7 +9,7 @@ https://github.com/Saya85/backend-proyecto-final.git
 
 ## Deploy de la aplicacion 🚀
 
-Frontend URL: 
+Frontend URL: https://git.heroku.com/font-foro-anime.git
 
 ### Instalación en local 🔧
 
