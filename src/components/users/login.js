@@ -44,7 +44,7 @@ function Login(){
         return (
             <div>
                 {isLogged && (
-                    <Navigate to="/movies" replace={true} />
+                    <Navigate to="/series" replace={true} />
                 )}
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
