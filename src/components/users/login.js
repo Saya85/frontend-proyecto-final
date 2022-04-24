@@ -23,11 +23,14 @@ function Login(){
     const handleSubmit =(e) => {
         e.preventDefault();
         const res = AuthService.login(formData.email, formData.password)
-        if (res) {
+        .then((res)=>{
+            if (res) {
             setIsLogged(true);
         } else {
             alert('Datos incorrectos o usuario invalido.')
-        }
+        } 
+        })
+       
         // AuthService.login(this.state.user, this.state.password).then(res => {
         //     if(res) {
         //         this.setState({isLogged: true})
@@ -44,7 +47,7 @@ function Login(){
         return (
             <div>
                 {isLogged && (
-                    <Navigate to="/movies" replace={true} />
+                    <Navigate to="/series" replace={true} />
                 )}
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>

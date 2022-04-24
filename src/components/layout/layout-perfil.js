@@ -1,6 +1,6 @@
 import { NavLink, Link, Outlet} from "react-router-dom";
 
-function Perfil() {
+function Logued() {
   let activeClassName = "underline"
   let liClassName = "nav-item";
   let navLink = "nav-link";
@@ -14,16 +14,6 @@ function Perfil() {
                   isActive ? (navLink + ' ' + activeClassName) : navLink
               } to="/perfil">perfil</NavLink>
             </li> 
-            <li className={liClassName}>
-              <NavLink className={({ isActive }) =>
-                  isActive ? (navLink + ' ' + activeClassName) : navLink
-              } to="listaMascota">mascotas</NavLink>
-            </li>
-            <li className={liClassName}>
-              <NavLink className={({ isActive }) =>
-                  isActive ? (navLink + ' ' + activeClassName) : navLink
-              } to="citasPend">citas</NavLink>
-            </li>
             <li className={liClassName}>
               <NavLink className={({ isActive }) =>
                   isActive ? (navLink + ' ' + activeClassName) : navLink
@@ -43,4 +33,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default Logued;

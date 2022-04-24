@@ -72,7 +72,7 @@ function Register(){
                     <button className="mt-5" type="submit">Acceder</button>
                 </form>
                 {passwordMatch && <p className="passwordMatch">Las contraseñas no coinciden.</p>}
-                {submitDone && <Navigate to='/movies'/>}
+                {submitDone && <Navigate to='/series'/>}
 
             </div>
         </div>
