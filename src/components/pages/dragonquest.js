@@ -1,32 +1,35 @@
 import React, { useState,useEffect  } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import capituloServices from "../../services/capitulos";
 
 
 function DragonQuest(){
+    const navigate = useNavigate();
     const [capitulos, setCapitulo] = useState();
     useEffect(() => {
-        capituloServices.capituloAll()
-        .then(res => setCapitulo(res.data))
+        capituloServices.getBySerieId(2)
+        .then(res => setCapitulo(res))
         },[])
-    console.log(capitulos)
+        const gotocapitulo = (e)=>{
+            console.log(e.target.className)
+            navigate('/capitulo/' + e.target.className);
+        }
     return(
         <div >
-            <h2>series</h2>
-            <ul className="d-flex">
+            <h1 className="titulo">Dragon Quest:dai</h1>
+            <ul className="d-flex flex-column justify-content-center ali">
                 {capitulos&&
-                    capitulos.map((anime,i)=>{
+                    capitulos.map((capitulo,i)=>{
                         return(
-                            <li key={i}>
-                                <img src={anime.image}></img>
-                                <h4>{anime.name}</h4>
-                                <p>{anime.description}</p>
+                            <li className="capitulo" key={i} >
+                                <h3 onClick={gotocapitulo} className={capitulo.id}>{capitulo.name}</h3>
+                                <p onClick={gotocapitulo} className={capitulo.id}>{capitulo.description}</p>
                             </li>
                         )
                     })
                 }
             </ul>
-
+            <Link to='/series'><h3>Series</h3></Link>
         </div>
     )
 

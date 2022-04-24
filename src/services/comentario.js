@@ -19,8 +19,10 @@ class ComentarioServices {
         }
     comentarioCapitulo(capitulo) {
         try {
-            const res = axios.get(API_URL + "capitulo",{"capitulo": capitulo})
+            const res = axios.post(API_URL + "capitulo", {"capitulo": capitulo})
+           // const res = axios.get(API_URL + "capitulo",{"capitulo": capitulo})
                 .then((response) => {
+                    //console.log(response.data)
                     return response.data;
                 }).catch(() => {
                     return false;
