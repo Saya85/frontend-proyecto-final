@@ -18,14 +18,14 @@ function Series(){
     }
     return(
         <div >
-            <h2>series</h2>
+            <h1 className="titulo">series</h1>
             <ul className="d-flex">
                 {serie&&
                     serie.map((anime,i)=>{
                         return(
-                            <li key={i} onClick={gotoserie} >
-                                <img src={anime.image} name={anime.name}></img>
-                                <h4>{anime.name}</h4>
+                            <li key={i}>
+                                <img src={anime.image} onClick={gotoserie} name={anime.name}></img>
+                                <h3>{anime.name}</h3>
                                 <p>{anime.description}</p>
                             </li>
                         )

@@ -10,10 +10,11 @@ function Capitulo() {
     console.log(id);
     return (
         <div>
+            
             <CapituloContent id={id} />
         </div>
     )
-    
+     
 }
 
 export default Capitulo;

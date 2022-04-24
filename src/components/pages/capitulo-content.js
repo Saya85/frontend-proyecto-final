@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 
-import { Link, useParams  } from "react-router-dom";
+import { Link, useParams, useNavigate  } from "react-router-dom";
 import ComentarioServices from "../../services/comentario";
 
 /* class AlquilerContent extends React.Component{
@@ -13,18 +13,27 @@ import ComentarioServices from "../../services/comentario";
  */
 function CapituloContent(){
     const { id } = useParams();
-    const [items, setItems] = useState( ()=>{
-        console.log(id);
-      ComentarioServices.comentarioCapitulo(id)
-    .then(res => res.data)
-    .catch(err => console.log(err))
-    });
+    const navigate = useNavigate();
     const [isLoaded, setIsLoaded] = useState(false);
-    const [error, setError] = useState(null);
-
+    const [comentarios, setComentarios] = useState();
+    const comentar = (e)=>{
+        
+        navigate('/comentario/' + id);
+    }
+    useEffect(() => {
+            ComentarioServices.comentarioCapitulo(id)
+                .then(res =>{
+                   // console.log(res);
+                    setComentarios(res)
+                    setIsLoaded(true);
+                })
+    } ,[])
+        
+    
     return (
         <div>
             <h2>Comentarios</h2>
+            <li onClick={comentar}>comentar</li>
             <ul>
             <li className="d-flex align-items-center mb-6">
                     <p className="col-4" >user</p>    
@@ -32,19 +41,24 @@ function CapituloContent(){
                     <p className='col-4'>comentario</p>
                     </li>
             {
-            isLoaded && (
-                items.map(comentario => (
-                    <li className="d-flex align-items-center mb-6">
+            comentarios && (
+                //console.log("comentarios")
+                //comentarios.map(comentario => (console.log(comentario)))
+                 comentarios.map((comentario, i) => (
+                     
+                    <li key={i} className="d-flex align-items-center mb-6">
                     <p className="col-4" >{comentario.idUser}</p>    
                     <p className='col-4'>{comentario.comentario}</p>
                     <p className='col-4'>{comentario.createdAt}</p>
-                    </li>
-                )))}
+                    </li> 
+                ))
+                //) 
+            )}
             </ul>
         
         </div>
     )
-    
+
 }
 
 export default CapituloContent
